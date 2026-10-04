@@ -14,7 +14,7 @@ auth_router.include_router(
 
 auth_router.include_router(
      register_routes,
-     prefix="/register"
+     prefix="/register",
      tags=[]
 )
 

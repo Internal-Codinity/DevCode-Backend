@@ -1,8 +1,12 @@
-from fastapi import APIRouter
-from .profile.scrap import route as scrap_routes
 from typing import Set
 
-auth_router = APIRouter()
+from fastapi import APIRouter
+from pydantic import BaseModel
+
+from .scrap import route as scrap_routes
+
+profile_router = APIRouter()
+
 
 class Profile(BaseModel):
     id: int
@@ -10,16 +14,14 @@ class Profile(BaseModel):
     linkedin: str
     github: str
     skills: Set[str]
-    
 
 
+@profile_router.post("/")
+def create_profile(payload: Profile):
+    return payload
 
-@auth_router.post
-def create_profile():
-    
 
-
-auth_router.include_router(
+profile_router.include_router(
     scrap_routes,
     prefix="/scrap",
     tags=[]

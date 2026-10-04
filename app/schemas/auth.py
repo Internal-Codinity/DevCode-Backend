@@ -16,7 +16,7 @@ class TokenResponse(BaseModel):
 class RegisterRequest(BaseModel):
     name: str
     email: EmailStr
-    number: 
+    number: PhoneNumber
 
 # auth schemas, login request, token response, register request, user response, forgot password request, reset password request, change password request, 
 # verify email request, resend verification email request, revoke tokens request, refresh token request, social login request, otp login request,
