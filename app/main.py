@@ -11,6 +11,10 @@ app = FastAPI(
 
 configure_app(app)
 
+@app.get("/")
+async def root():
+    return {"status": "ok", "service": "Codex Backend"}
+
 @app.get("/health")
 async def health_check():
     return {"status": "healthy"}
