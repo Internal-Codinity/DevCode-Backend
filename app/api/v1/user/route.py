@@ -3,21 +3,33 @@ from fastapi import APIRouter
 from .login import route as login_routes
 from .register import route as  register_routes
 
-auth_router = APIRouter()
+user_router = APIRouter()
 
-auth_router.include_router(
+user_router.include_router(
      login_routes,
      prefix="/login",
-     tags=[]
+     tags=[login_routes.__name__]
 )
 
 
-auth_router.include_router(
+user_router.include_router(
      register_routes,
      prefix="/register",
-     tags=[]
+     tags=[register_routes.__name__]
 )
 
+
+user_router.include_router(
+     logout_routes,
+     prefix="/logout",
+     tags=[logout_routes.__name__]
+)
+
+user_router.include_router(
+     refresh_routes,
+     prefix="/refresh",
+     tags=[refresh_routes.__name__]
+)
 
 
 
